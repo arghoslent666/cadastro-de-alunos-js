@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/students.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- Container,and complements Html elements -->
+    <h1>Alunos Cadastrados</h1>
+    <img id="logo-school" src="img/colegio-logo.png" alt="">
+    <div class="container">
+    </div>
+    <!------------->
+
+    <script>
+        // Recupera os dados dos alunos do localStorage
+        var alunos = JSON.parse(localStorage.getItem('alunos'));
+
+        //------------------Create Students cards------------------//
+        // Exibe os dados dos alunos na página
+        var container = document.querySelector('.container');
+        if (alunos) {
+            alunos.forEach(function(aluno) {
+                var alunoDiv = document.createElement('div');
+                alunoDiv.setAttribute('class','students-div')
+                alunoDiv.innerHTML = `
+                    <p class="info">Nome: ${aluno.nome}</p>
+                    <p class="info">Idade: ${aluno.idade}</p>
+                    <p class="info">Matrícula: ${aluno.matricula}</p>
+                    <p class="info">Data de Nascimento: ${aluno.data}</p>
+                    <p class="info">Pai: ${aluno.pai}</p>
+                    <p class="info">Mãe: ${aluno.mather}</p>
+                    <p class="info">CPF: ${aluno.cpf}</p>
+                    
+                `;
+                container.appendChild(alunoDiv);
+            });
+        }
+
+    </script>
+
+</body>
+</html>
